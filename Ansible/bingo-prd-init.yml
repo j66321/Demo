@@ -1,0 +1,10 @@
+---
+- name: Init
+  hosts: bingo-prd
+  become: true
+
+  roles:
+    - { role: authorized_add}
+    - { role: init_awslinux}
+    - { role: docker_awslinux}
+    - { role: zabbix_agent_redhat}

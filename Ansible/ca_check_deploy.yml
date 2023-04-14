@@ -1,0 +1,7 @@
+---
+- name: Deploy CA and reload Nginx
+  hosts: "{{ domain }}"
+  become: true
+  roles:
+    - { role: ca_deploy } 
+

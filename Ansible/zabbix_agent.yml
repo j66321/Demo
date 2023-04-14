@@ -1,0 +1,8 @@
+---
+- name: Install zabbix agent
+  hosts: bingobingo-rel-srv-01
+  become: true
+
+  roles:
+    - { role: zabbix_agent_redhat, when: "ansible_os_family == 'RedHat'" }
+    - { role: zabbix_agent_ubuntu, when: "ansible_os_family == 'Debian'" } 

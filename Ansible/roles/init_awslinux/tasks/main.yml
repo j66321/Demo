@@ -1,0 +1,35 @@
+- name: Set up hostname
+  hostname:
+    name: "{{ new_hostname }}"
+
+- name: Set timezone to Asia/Taipei
+  timezone: 
+    name: Asia/Taipei
+
+- name: install aws epel
+  become: true
+  command:
+    cmd: amazon-linux-extras install epel -y
+  ignore_errors: yes
+
+- name: yum install tools and update cache
+  become: true
+  yum:
+    update_cache: true 
+    name:
+      - wget
+      - lrzsz
+      - telnet 
+      - net-tools 
+      - vim 
+      - unzip 
+      - tree 
+      - rsync
+      - firewalld
+      - yum-utils
+
+- name: Disable firewall
+  systemd: 
+    name: firewalld
+    state: stopped
+    enabled: false

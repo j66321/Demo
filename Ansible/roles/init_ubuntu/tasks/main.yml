@@ -1,0 +1,35 @@
+- name: Set up hostname
+  hostname:
+    name: "{{ new_hostname }}"
+
+- name: Set timezone to Asia/Taipei
+  become: true
+  timezone: 
+    name: Asia/Taipei
+
+- name: apt install tools and update cache
+  become: True
+  apt:
+    update_cache: yes
+    name:
+      - wget
+      - lrzsz
+      - telnet 
+      - net-tools 
+      - vim 
+      - unzip 
+      - tree 
+      - iftop 
+      - rsync
+      - chrony
+      - curl
+
+- name: Disable firewall
+  become: true
+  ufw:
+    state: disabled
+
+- name: start chronyd
+  service:
+    name: chronyd
+    state: started

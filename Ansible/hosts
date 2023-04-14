@@ -1,0 +1,83 @@
+[devops]
+jira ansible_host=172.31.13.89
+confluence ansible_host=172.31.4.12
+gitlab ansible_host=172.31.5.23
+common-nginx ansible_host=172.31.7.156
+openvpn ansible_host=172.31.8.48 
+zabbix-grafana ansible_host=172.31.8.106
+
+[jenkins-slave]
+jenkins-slave-builder-01 ansible_host=172.31.2.101
+jenkins-slave-builder-02 ansible_host=172.31.23.34 
+
+[ubuntu]
+jenkins-master ansible_host=172.31.8.126
+jenkins-slave-builder-02
+common-nginx
+
+[456]
+456-dev-srv-01 ansible_host=172.31.22.6
+456-stg-srv-01 ansible_host=172.31.21.84
+456-rel-srv-01 ansible_host=172.31.17.24
+
+[BCN-DEMO]
+BCN-SRV-DEMO ansible_host=172.31.27.243
+BCN-ORCL-DEMO ansible_host=172.31.30.35
+
+[bingo-prd]
+456-Prd-Cave-Game-01 ansible_host=172.31.16.96
+456-Prd-Odin-Game-01 ansible_host=172.31.16.148
+456-Prd-Backapi-01 ansible_host=172.31.19.122
+456-Prd-Caribbean-Game-01 ansible_host=172.31.23.166
+456-Prd-Gate-01 ansible_host=172.31.20.121
+456-Prd-Stress-01 ansible_host=172.31.23.66
+456-Prd-Ngx-01 ansible_host=172.31.18.44
+456-Prd-Redis-01 ansible_host=172.31.36.221
+
+[nginx]
+common-nginx
+456-dev-srv-01
+456-stg-srv-01
+456-rel-srv-01
+BCN-SRV-DEMO
+456-Prd-Ngx-01
+
+
+###### For CA Domain Check and Deploy #######
+[123.cc]
+common-nginx
+
+[123.com.tw]
+common-nginx
+
+[123-123.cc]
+common-nginx
+456-dev-srv-01
+
+[123-123.cc]
+common-nginx
+456-stg-srv-01
+
+[123-123.cc]
+common-nginx
+456-rel-srv-01
+
+[123.cc]
+456-rel-srv-01
+common-nginx
+BCN-SRV-DEMO
+
+[123.com]
+456-Prd-Ngx-01
+
+[123.com]
+456-Prd-Ngx-01
+
+[123.com]
+456-Prd-Ngx-01
+
+[123.com]
+456-Prd-Ngx-01
+
+[123.cc]
+456-Prd-Ngx-01

@@ -1,0 +1,16 @@
+- name: copy zabbix install&config script
+  become: true
+  copy:
+    src: files/zabbix-agent-container-install-for-ubuntu.sh
+    dest: /opt/zabbix-agent-container-install-for-ubuntu.sh
+
+- name: install zabbix agent by shell script
+  become: true
+  shell:
+    cmd: sh /opt/zabbix-agent-container-install-for-ubuntu.sh
+
+- name: remove zabbix script 
+  become: true
+  file:
+    path: /opt/zabbix-agent-container-install-for-ubuntu.sh
+    state: absent

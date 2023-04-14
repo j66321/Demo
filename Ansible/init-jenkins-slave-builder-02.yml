@@ -1,0 +1,10 @@
+---
+- name: Init
+  hosts: jenkins-slave-builder-02
+  become: true
+
+  roles:
+    - { role: init_ubuntu } 
+    - { role: docker_ubuntu } 
+    - { role: zabbix_agent_ubuntu } 
+    - { role: jenkins_slave_ubuntu } 

@@ -1,0 +1,20 @@
+- name: Create {{ domain }} folder if not exist
+  file:
+    path: /etc/nginx/ssl/{{ domain }}
+    state: directory
+    mode: '0755'
+
+- name: Deploy CA to Managed Nginx
+  copy:
+    src: /app/ca_new/{{ domain }}/{{ item }}
+    dest: /etc/nginx/ssl/{{ domain }}
+  with_items:
+      - cert.pem
+      - chain.pem
+      - fullchain.pem
+      - privkey.pem
+
+- name: Nginx configuration check
+  command:
+    cmd: nginx -t
+  notify: reload nginx

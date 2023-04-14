@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  zabbix-agent:
+    image: zabbix/zabbix-agent2:6.0.7-centos
+    container_name: zabbix-agent
+    network_mode: host
+    user: root
+    restart: always
+    environment:
+      - ZBX_PASSIVESERVERS=172.31.8.106
+      - TZ=Asia/Taipei
+      - ZBX_HOSTNAME={{ ansible_hostname }}
+    volumes:
+      - /dev:/dev:ro

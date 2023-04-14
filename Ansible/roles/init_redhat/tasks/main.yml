@@ -1,0 +1,39 @@
+- name: Set up hostname
+  hostname:
+    name: "{{ new_hostname }}"
+
+- name: Set timezone to Asia/Taipei
+  timezone: 
+    name: Asia/Taipei
+
+- name: yum install tools and update cache
+  yum:
+    update_cache: true 
+    name:
+      - wget
+      - lrzsz
+      - telnet 
+      - net-tools 
+      - vim 
+      - unzip 
+      - tree 
+      - rsync
+      - firewalld
+      - chrony
+      - libselinux-python
+      - yum-utils
+
+- name: Disable firewall
+  systemd: 
+    name: firewalld
+    state: stopped
+    enabled: false
+
+- name: Disable SELinux
+  selinux:
+    state: disabled
+
+- name: run chronyd
+  service:
+    name: chronyd
+    state: restarted

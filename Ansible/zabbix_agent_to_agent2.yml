@@ -1,0 +1,6 @@
+---
+- name: zabbix_agent_to_agent2
+  hosts: 
+
+  roles:
+    - { role: zabbix_agent_to_agent2 } 

@@ -1,0 +1,26 @@
+- name: stop zabbix agent docker
+  command:
+    cmd: docker stop zabbix-agent
+  ignore_errors: true
+
+- name: remove zabbix agent docker 
+  command:
+    cmd: docker rm zabbix-agent
+  ignore_errors: true
+
+- name: create docker copmose directory
+  file:
+    path: /opt/zabbix-agent
+    state: "directory"  
+
+- name: create docker-compose file
+  become: true
+  template:
+    src: "docker-compose.j2"
+    dest: /opt/zabbix-agent/docker-compose.yml
+      
+- name: run zabbix agent2 docker 
+  docker_compose: 
+    project_src: /opt/zabbix-agent
+    state: present
+    restarted: true

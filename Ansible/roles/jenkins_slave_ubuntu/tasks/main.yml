@@ -1,0 +1,17 @@
+#install jenkins slave ubuntu
+- name: Install the 'software-properties-common' packages
+  apt:
+    update_cache: yes
+    name:
+    - software-properties-common
+    - apt-transport-https
+
+- name: Add the java PPA repository
+  command:
+    cmd: add-apt-repository ppa:openjdk-r/ppa -y
+
+- name: Install java OpenJDK
+  apt:
+    name:
+    - openjdk-17-jdk
+    - openjdk-17-jre

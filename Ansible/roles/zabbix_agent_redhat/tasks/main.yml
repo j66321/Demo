@@ -1,0 +1,13 @@
+- name: copy zabbix install&config script
+  copy:
+    src: files/zabbix-install-agent.sh
+    dest: /opt/zabbix-install-agent.sh
+
+- name: install zabbix agent by shell script
+  shell:
+    cmd: sh /opt/zabbix-install-agent.sh
+
+- name: remove zabbix script 
+  file:
+    path: /opt/zabbix-install-agent.sh
+    state: absent

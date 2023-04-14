@@ -1,0 +1,10 @@
+---
+- name: Init
+  hosts: bingobingo-rel-srv-01
+  become: true
+
+  roles:
+    #- { role: authorized_add}
+    - { role: init_awslinux, when: "ansible_os_family == 'RedHat'" }
+    #- { role: init_redhat, when: "ansible_os_family == 'RedHat'" }
+    - { role: init_ubuntu, when: "ansible_os_family == 'Debian'" } 
