@@ -22,6 +22,10 @@
 - backup-jumpser.ps1 : Backup script for bastion server
 
 
+### Python
+
+- CA-Monitor-Deploy : Deploy domain CA monitory to zabbix when new domain purchase
+
 
 
 ### Shell Script
